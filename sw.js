@@ -9,8 +9,6 @@ self.addEventListener('fetch', event => {
             return fetch(event.request);
         }
         const clientId = event.clientId;
-
-        debugger;
                              
         const res = await fetch(event.request.url, {
                                 method: event.request.method,
