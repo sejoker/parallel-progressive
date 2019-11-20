@@ -5,12 +5,24 @@ self.addEventListener('install', event => {
 self.addEventListener('fetch', event => {
     const url = event.request.url;
     return event.respondWith(async function(){
-        if (!/\.jpg/.test(url)) {
-            debugger;
+        if (!/\.jpg/.test(url))
             return fetch(event.request);
         }
         const clientId = event.clientId;
-        const res = await fetch(event.request);
+
+        debugger;
+                             
+        const res = await fetch(event.request.url, {
+                                method: event.request.method,
+                                mode: "same-origin", // no-cors, cors, *same-origin
+                                cache: event.request.cache,
+                                credentials: event.request.credentials,
+                                headers: {
+                                    //"Content-Type": "application/json; charset=utf-8",
+                                    "Accept": "text/css,*/*;q=0.1"
+                                },
+                                redirect: event.request.redirect, // manual, *follow, error
+        });
         if (!res.body) { // cross-origin?
             return res;
         }
