@@ -14,7 +14,7 @@ self.addEventListener('fetch', event => {
                              
         const res = await fetch(event.request.url, {
                                 method: event.request.method,
-                                mode: "same-origin", // no-cors, cors, *same-origin
+                                mode: event.request.mode, // no-cors, cors, *same-origin
                                 cache: event.request.cache,
                                 credentials: event.request.credentials,
                                 headers: {
