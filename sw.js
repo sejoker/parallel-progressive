@@ -6,6 +6,7 @@ self.addEventListener('fetch', event => {
     const url = event.request.url;
     return event.respondWith(async function(){
         if (!/\.jpg/.test(url)) {
+            debugger;
             return fetch(event.request);
         }
         const clientId = event.clientId;
