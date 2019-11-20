@@ -5,9 +5,9 @@ self.addEventListener('install', event => {
 self.addEventListener('fetch', event => {
     const url = event.request.url;
     return event.respondWith(async function(){
-        if (!/\.jpg/.test(url)) {
+        if (!/\.jpg/.test(url))
             return fetch(event.request);
-        }
+
         const clientId = event.clientId;
 
         debugger;
