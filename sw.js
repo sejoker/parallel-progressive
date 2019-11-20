@@ -8,18 +8,18 @@ self.addEventListener('fetch', event => {
         if (!/\.jpg/.test(url)) {
             return fetch(event.request);
         }
+
         const clientId = event.clientId;
                              
-        const res = await fetch(event.request.url, {
+        const res = await fetch(event.request.url, {                              
                                 method: event.request.method,
-                                mode: event.request.mode, // no-cors, cors, *same-origin
+                                mode: event.request.mode,
                                 cache: event.request.cache,
                                 credentials: event.request.credentials,
                                 headers: {
-                                    //"Content-Type": "application/json; charset=utf-8",
-                                    "Accept": "text/css,*/*;q=0.1"
+                                    "Accept": "text/css,*/*;q=0.1" // increase priority to high
                                 },
-                                redirect: event.request.redirect, // manual, *follow, error
+                                redirect: event.request.redirect,
         });
         if (!res.body) { // cross-origin?
             return res;
